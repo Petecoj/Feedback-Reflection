@@ -1,12 +1,13 @@
+//Imports
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+// Styles for Stepper Progress Bar
 const styles = theme => ({
 
   button: {
@@ -18,10 +19,12 @@ const styles = theme => ({
   },
 });
 
+// Provide each step inside Progress bar
 function getSteps() {
   return ['Feelings', 'Understanding', 'Support', 'Comments', 'Complete'];
 }
 
+// Provide text to display accordingly for each step above
 function getStepContent(step) {
   switch (step) {
     case 0:
@@ -39,34 +42,26 @@ function getStepContent(step) {
   }
 }
 
-class HorizontalLinearStepper extends React.Component {
+// Create Stepper Progress Bar Component
+class ProgressBar extends React.Component {
   state = {
     activeStep: 0,
     skipped: new Set(),
   };
 
 
-
-
-  isStepSkipped(step) {
-    return this.state.skipped.has(step);
-  }
-
   render() {
     const { classes } = this.props;
     const steps = getSteps();
     const { activeStep } = this.state;
 
+// loops through each step provides message and moves step marker     
     return (
       <div className={classes.root}>
         <Stepper activeStep={this.props.step}>
           {steps.map((label, index) => {
             const props = {};
            
-           
-            if (this.isStepSkipped(index)) {
-              props.completed = false;
-            }
             return (
               <Step key={label} {...props}>
                 <StepLabel >{label}</StepLabel>
@@ -77,12 +72,6 @@ class HorizontalLinearStepper extends React.Component {
         <div>
           {activeStep === steps.length ? (
             <div>
-              <Typography className={classes.instructions}>
-                All steps completed - you&quot;re finished
-              </Typography>
-              <Button onClick={this.handleReset} className={classes.button}>
-                Reset
-              </Button>
             </div>
           ) : (
             <div>
@@ -97,8 +86,9 @@ class HorizontalLinearStepper extends React.Component {
   }
 }
 
-HorizontalLinearStepper.propTypes = {
+ProgressBar.propTypes = {
   classes: PropTypes.object,
 };
 
-export default withStyles(styles)(HorizontalLinearStepper);
+// Exports Progress Bar Component
+export default withStyles(styles)(ProgressBar);

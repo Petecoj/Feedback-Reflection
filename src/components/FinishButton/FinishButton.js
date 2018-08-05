@@ -1,35 +1,27 @@
+// Imports
 import React, {Component, } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
 
-
+// Styles for Finish Button
 const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
-    },
-    leftIcon: {
-        marginRight: theme.spacing.unit,
-    },
-    rightIcon: {
-        marginLeft: theme.spacing.unit,
     },
     iconSmall: {
         fontSize: 20,
     },
 });
 
-
-class IconLabelButtons extends Component {
+// Create Finish Button Component
+class FinishButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
         }
     }
-  
     
     render() {
         const { classes } = this.props;
@@ -43,8 +35,9 @@ class IconLabelButtons extends Component {
     }
 }
 
-IconLabelButtons.propTypes = {
+FinishButton.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default connect()(withStyles(styles)(IconLabelButtons));
+// Export Finish Button Component
+export default connect()(withStyles(styles)(FinishButton));

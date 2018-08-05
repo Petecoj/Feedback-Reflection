@@ -1,40 +1,32 @@
+// Imports
 import React, {Component, } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
 
-
+// Styles for Next Page Button
 const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
-    },
-    leftIcon: {
-        marginRight: theme.spacing.unit,
-    },
-    rightIcon: {
-        marginLeft: theme.spacing.unit,
     },
     iconSmall: {
         fontSize: 20,
     },
 });
 
-
-class IconLabelButtons extends Component {
+// Create Next page Button component
+class NextPageButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
             
         }
     }
+
+// sends data from page to redux and advances user to next page url
     handleNextClick = () => {
-        console.log('clicked', this.props.nextPage);
-       
-        this.props.dispatch(
-            { type: this.props.path, payload: this.props.payload },
-        )
+        this.props.dispatch({ type: this.props.path, payload: this.props.payload })
         window.location.href= `/#/${this.props.nextPage}`;
       
 
@@ -45,16 +37,16 @@ class IconLabelButtons extends Component {
         return (
             <div>
                 <Button onClick={this.handleNextClick} variant="contained" color="primary" className={classes.button}>
-                    Next
-                   
+                    Next        
                 </Button>
             </div>
         )
     }
 }
 
-IconLabelButtons.propTypes = {
+NextPageButton.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default connect()(withStyles(styles)(IconLabelButtons));
+// Exports Next Page Button
+export default connect()(withStyles(styles)(NextPageButton));

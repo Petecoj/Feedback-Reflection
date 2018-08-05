@@ -1,4 +1,4 @@
-
+//Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header';
@@ -6,8 +6,7 @@ import NextPageButton from '../NextPageButton/NextPageButton';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import RadioAnswerBar from '../RadioAnswerBar/RadioAnswerBar';
 
-
-
+//Create Component
 class RateSupportPage extends Component {
     constructor() {
         super()
@@ -15,7 +14,7 @@ class RateSupportPage extends Component {
             selectedValue: '1',
         }
     } 
-
+//Event handler for radio bar
     handleChange = event => {
         this.setState({ selectedValue: event.target.value });
         
@@ -23,7 +22,6 @@ class RateSupportPage extends Component {
       
   
   render() {
-    console.log(this.state.selectedValue);
     return (
         <div>
         <Header/>
@@ -41,7 +39,5 @@ class RateSupportPage extends Component {
   }
 }
 
-
-
-  
+//Export component
   export default connect()(RateSupportPage);
