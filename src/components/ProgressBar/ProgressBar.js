@@ -36,7 +36,7 @@ function getStepContent(step) {
     case 3:
       return 'Any comments or concerns?'
       case 4:
-      return 'Thanks for your feedback!?'
+      return 'Thanks for your feedback!'
     default:
       return 'Unknown step';
   }
